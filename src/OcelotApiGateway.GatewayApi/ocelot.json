@@ -7,12 +7,26 @@
         {
           "Host": "localhost",
           "Port": 54703
+        },
+        {
+          "Host": "localhost",
+          "Port": 1111
         }
       ],
+      "LoadBalancerOptions": {
+        "Type": "CustomLoadBalancer"
+      },
       "UpstreamPathTemplate": "/api/v1/customers",
       "UpstreamHttpMethod": [
         "Get"
-      ]
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "5s",
+        "PeriodTimespan": 15,
+        "Limit": 2
+      }
     },
     {
       "DownstreamPathTemplate": "/api/customers/{id}",
